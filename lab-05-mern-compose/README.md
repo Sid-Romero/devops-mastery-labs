@@ -73,7 +73,7 @@ Your solution should:
 - [ ] Frontend (React) builds and serves correctly
 - [ ] Backend (Express) connects to MongoDB
 - [ ] MongoDB uses a persistent volume
-- [ ] Services start in correct order (depends_on with condition)
+- [ ] Services start in correct order using depends_on
 - [ ] Health checks implemented for all services
 - [ ] Environment variables used for configuration
 - [ ] Frontend can communicate with backend API
@@ -120,7 +120,7 @@ docker-compose down -v
 
 ## 💡 Hints
 
-- Use `depends_on` with `condition: service_healthy` for proper startup order
+- Use `depends_on` to define service dependencies (note: this only controls startup order, not readiness)
 - Implement health check endpoints in your backend API
 - Use separate Dockerfiles for dev and production (Dockerfile.dev, Dockerfile.prod)
 - Consider using `docker-compose.override.yml` for local development settings

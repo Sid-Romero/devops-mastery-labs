@@ -76,7 +76,8 @@ docker run -e DB_PASSWORD=secret123 lab02-python-app
 # Run with env file
 docker run --env-file .env lab02-python-app
 
-# Use Docker secrets (swarm mode)
+# Use Docker secrets (requires Docker Swarm mode - run 'docker swarm init' first)
+docker swarm init
 echo "my-secret-password" | docker secret create db_password -
 docker service create --secret db_password lab02-python-app
 ```
