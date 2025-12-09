@@ -1,0 +1,29 @@
+{
+  "name": "lab-01-multistage-node",
+  "version": "1.0.0",
+  "description": "MVC application ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sid-Romero/docker-mastery-labs.git#main"
+  },
+  "author": "Sidya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sid-Romero/docker-mastery-labs/issues"
+  },
+  "homepage": "https://github.com/Sid-Romero/docker-mastery-labs/tree/main#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  }
+}
