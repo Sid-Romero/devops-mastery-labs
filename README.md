@@ -1,3 +1,6 @@
+# AI
+The structure of this repo was purely created with github copilot AI. This has be done in order to make it easy for me and let me focus on the actual learning labs !
+
 # Docker Mastery Labs
 
 A collection of 35+ hands-on labs to master Docker and Git from A to Z. Each lab is a self-contained mini-project with clear objectives, specific constraints, and validation criteria. Progress from beginner to production expert.
