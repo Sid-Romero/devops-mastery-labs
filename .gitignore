@@ -16,7 +16,8 @@ env/
 *.egg-info/
 dist/
 build/
-
+#venv
+docker-mastery/
 # IDE
 .vscode/
 .idea/
