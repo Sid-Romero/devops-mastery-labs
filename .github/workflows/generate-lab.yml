@@ -12,7 +12,7 @@ on:
       force_generate:
         description: 'Force generate a lab even if 50+ labs exist'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       technology:
         description: 'Force a specific technology (docker/kubernetes/helm/argocd/ansible)'
