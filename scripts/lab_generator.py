@@ -108,6 +108,101 @@ def validate_environment():
     return errors
 
 
+def scrape_topics(scraper: DevOpsScraper, skip: bool = False):
+    """Scrape DevOps topics from the web or return fallback"""
+    from web_scraper import DevOpsTopic
+
+    if skip:
+        print("[INFO] Skipping web scrape, using fallback topic")
+        return get_fallback_topics()
+
+    print("[INFO] Scraping DevOps content from multiple sources...")
+    topics = scraper.scrape_all()
+
+    if not topics:
+        print("[WARN] No topics found, using fallback")
+        return get_fallback_topics()
+
+    print(f"[INFO] Found {len(topics)} topics")
+    return topics
+
+
+def get_fallback_topics():
+    """Return fallback topics when scraping fails"""
+    from web_scraper import DevOpsTopic
+    import random
+
+    fallbacks = [
+        DevOpsTopic(
+            title="Container image optimization and multi-stage builds",
+            summary="Learn techniques to reduce Docker image size and improve build performance.",
+            source="fallback",
+            url="",
+            tags=["docker", "optimization"],
+            technology="docker"
+        ),
+        DevOpsTopic(
+            title="Kubernetes deployment strategies and rollbacks",
+            summary="Implement rolling updates, blue-green and canary deployments in Kubernetes.",
+            source="fallback",
+            url="",
+            tags=["kubernetes", "deployment"],
+            technology="kubernetes"
+        ),
+        DevOpsTopic(
+            title="Helm chart templating and dependencies",
+            summary="Create reusable Helm charts with advanced templating features.",
+            source="fallback",
+            url="",
+            tags=["helm", "charts"],
+            technology="helm"
+        ),
+        DevOpsTopic(
+            title="GitOps workflow with ArgoCD",
+            summary="Set up continuous delivery using ArgoCD and GitOps principles.",
+            source="fallback",
+            url="",
+            tags=["argocd", "gitops"],
+            technology="argocd"
+        ),
+        DevOpsTopic(
+            title="Ansible playbooks for server configuration",
+            summary="Automate server setup and configuration management with Ansible.",
+            source="fallback",
+            url="",
+            tags=["ansible", "automation"],
+            technology="ansible"
+        ),
+    ]
+    return fallbacks
+
+
+def select_topic_and_technology(topics, force_technology=None):
+    """Select a topic and technology for lab generation"""
+    import random
+
+    # Determine technology
+    if force_technology:
+        technology = force_technology
+    else:
+        # 70% chance to pick from topic's detected technology
+        tech_topics = [t for t in topics if t.technology]
+        if tech_topics and random.random() < 0.7:
+            selected = random.choice(tech_topics)
+            technology = selected.technology
+        else:
+            technology = random.choice(TECHNOLOGIES)
+
+    # Select topic (prefer matching technology)
+    matching = [t for t in topics if t.technology == technology]
+    if matching:
+        topic = random.choice(matching)
+    else:
+        topic = random.choice(topics)
+
+    return topic, technology
+
+
 # Entry point - to be completed in next commits
 def main():
     """Main entry point"""
@@ -142,14 +237,40 @@ def main():
     print(f"[INFO] Skip scrape: {args.skip_scrape}")
     print(f"[INFO] Technology: {config['force_technology'] or 'random'}")
 
-    # TODO: Complete in next commits
-    # - Step 1: Scrape topics
-    # - Step 2: Select topic and technology
-    # - Step 3: Generate lab
+    # Initialize components
+    scraper, generator, creator, existing_labs = init_components(config['api_key'])
+
+    # Step 1: Scrape topics or use fallback
+    print("\n" + "-" * 60)
+    print("Step 1: Fetching DevOps content")
+    print("-" * 60)
+
+    topics = scrape_topics(scraper, skip=args.skip_scrape)
+
+    # Step 2: Select topic and technology
+    print("\n" + "-" * 60)
+    print("Step 2: Selecting topic and technology")
+    print("-" * 60)
+
+    topic, technology = select_topic_and_technology(
+        topics=topics,
+        force_technology=config['force_technology']
+    )
+
+    print(f"[INFO] Selected technology: {technology}")
+    print(f"[INFO] Selected topic: {topic.title[:60]}...")
+    print(f"[INFO] Source: {topic.source}")
+
+    # TODO: Complete in next commit
+    # - Step 3: Generate lab with AI
     # - Step 4: Create files
 
-    print("\n[INFO] Orchestrator structure ready")
-    print("[TODO] Complete implementation in next commits")
+    if args.dry_run:
+        print("\n[DRY-RUN] Would generate lab here. Exiting.")
+        return 0
+
+    print("\n[INFO] Topic selection complete")
+    print("[TODO] Lab generation in next commit")
 
     return 0
 
@@ -194,6 +315,35 @@ def run_tests():
         from file_creator import LabFileCreator
         print("       PASSED")
         passed += 1
+    except Exception as e:
+        print(f"       FAILED: {e}")
+        failed += 1
+
+    # Test 4: Fallback topics
+    print("\n[TEST] Fallback topics...")
+    try:
+        fallbacks = get_fallback_topics()
+        if len(fallbacks) == 5:
+            print(f"       PASSED ({len(fallbacks)} fallback topics)")
+            passed += 1
+        else:
+            print(f"       FAILED: Expected 5 fallbacks, got {len(fallbacks)}")
+            failed += 1
+    except Exception as e:
+        print(f"       FAILED: {e}")
+        failed += 1
+
+    # Test 5: Topic selection
+    print("\n[TEST] Topic and technology selection...")
+    try:
+        fallbacks = get_fallback_topics()
+        topic, tech = select_topic_and_technology(fallbacks, force_technology='docker')
+        if tech == 'docker' and topic is not None:
+            print(f"       PASSED (tech={tech}, topic={topic.title[:30]}...)")
+            passed += 1
+        else:
+            print(f"       FAILED: Unexpected result")
+            failed += 1
     except Exception as e:
         print(f"       FAILED: {e}")
         failed += 1
