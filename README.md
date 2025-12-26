@@ -135,7 +135,7 @@ The file creator component:
 The lab generation is automated through GitHub Actions:
 
 **Schedule:**
-- Runs automatically every 3-5 hours (alternating pattern)
+- Runs automatically at intervals of 3 or 5 hours (runs at 00:00, 03:00, 08:00, 11:00, 16:00, 19:00 UTC)
 - Switches to daily generation once 50 labs are reached
 - Can be manually triggered with technology specification
 
