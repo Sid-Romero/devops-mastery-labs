@@ -203,7 +203,58 @@ def select_topic_and_technology(topics, force_technology=None):
     return topic, technology
 
 
-# Entry point - to be completed in next commits
+def generate_lab_with_ai(generator, topic, technology, existing_labs):
+    """Generate a lab using the AI generator"""
+    try:
+        print(f"[INFO] Calling Gemini API...")
+        lab = generator.generate_lab(
+            topic_title=topic.title,
+            topic_summary=topic.summary,
+            technology=technology,
+            existing_labs=existing_labs
+        )
+
+        # Verify difficulty assessment
+        print("[INFO] Verifying difficulty assessment...")
+        verified_difficulty = generator.assess_difficulty(lab)
+        if verified_difficulty != lab.difficulty:
+            print(f"[INFO] Adjusted difficulty: {lab.difficulty} -> {verified_difficulty}")
+            lab.difficulty = verified_difficulty
+        else:
+            print(f"[INFO] Confirmed difficulty: {lab.difficulty}")
+
+        return lab
+
+    except Exception as e:
+        print(f"[ERROR] AI generation failed: {e}")
+        return None
+
+
+def create_lab_files(creator, lab):
+    """Create the lab directory and files"""
+    try:
+        lab_path = creator.create_lab(lab)
+        return lab_path
+    except Exception as e:
+        print(f"[ERROR] File creation failed: {e}")
+        return None
+
+
+def write_github_output(lab_path, lab):
+    """Write outputs for GitHub Actions"""
+    github_output = os.environ.get('GITHUB_OUTPUT')
+    if github_output:
+        try:
+            with open(github_output, 'a') as f:
+                f.write(f"lab_name={lab_path.name}\n")
+                f.write(f"lab_title={lab.title}\n")
+                f.write(f"lab_technology={lab.technology}\n")
+                f.write(f"lab_difficulty={lab.difficulty}\n")
+            print("[INFO] GitHub Actions outputs written")
+        except Exception as e:
+            print(f"[WARN] Failed to write GitHub outputs: {e}")
+
+
 def main():
     """Main entry point"""
     args = parse_args()
@@ -261,16 +312,49 @@ def main():
     print(f"[INFO] Selected topic: {topic.title[:60]}...")
     print(f"[INFO] Source: {topic.source}")
 
-    # TODO: Complete in next commit
-    # - Step 3: Generate lab with AI
-    # - Step 4: Create files
-
     if args.dry_run:
         print("\n[DRY-RUN] Would generate lab here. Exiting.")
         return 0
 
-    print("\n[INFO] Topic selection complete")
-    print("[TODO] Lab generation in next commit")
+    # Step 3: Generate lab with AI
+    print("\n" + "-" * 60)
+    print("Step 3: Generating lab with AI")
+    print("-" * 60)
+
+    lab = generate_lab_with_ai(
+        generator=generator,
+        topic=topic,
+        technology=technology,
+        existing_labs=existing_labs
+    )
+
+    if not lab:
+        print("[ERROR] Failed to generate lab")
+        return 1
+
+    # Step 4: Create lab files
+    print("\n" + "-" * 60)
+    print("Step 4: Creating lab files")
+    print("-" * 60)
+
+    lab_path = create_lab_files(creator, lab)
+
+    if not lab_path:
+        print("[ERROR] Failed to create lab files")
+        return 1
+
+    # Summary
+    print("\n" + "=" * 60)
+    print("Lab Generation Complete")
+    print("=" * 60)
+    print(f"  Directory: {lab_path.name}")
+    print(f"  Title: {lab.title}")
+    print(f"  Technology: {lab.technology}")
+    print(f"  Difficulty: {lab.difficulty}")
+    print("=" * 60)
+
+    # Output for GitHub Actions
+    write_github_output(lab_path, lab)
 
     return 0
 
@@ -344,6 +428,18 @@ def run_tests():
         else:
             print(f"       FAILED: Unexpected result")
             failed += 1
+    except Exception as e:
+        print(f"       FAILED: {e}")
+        failed += 1
+
+    # Test 6: File creator initialization
+    print("\n[TEST] File creator initialization...")
+    try:
+        from file_creator import LabFileCreator
+        creator = LabFileCreator()
+        existing = creator.get_existing_labs()
+        print(f"       PASSED (found {len(existing)} existing labs)")
+        passed += 1
     except Exception as e:
         print(f"       FAILED: {e}")
         failed += 1
