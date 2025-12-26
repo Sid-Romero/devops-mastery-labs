@@ -51,8 +51,8 @@ class GeminiLabGenerator:
             raise ValueError("GEMINI_API_KEY environment variable is required")
 
         self.client = genai.Client(api_key=self.api_key)
-        # Use gemini-1.5-flash (free tier, fast, stable)
-        self.model_name = 'gemini-1.5-flash'
+        # Use gemini-2.0-flash (current model, free tier)
+        self.model_name = 'gemini-2.0-flash'
 
     def _build_prompt(self, topic_title: str, topic_summary: str,
                       technology: str, existing_labs: list[str]) -> str:
