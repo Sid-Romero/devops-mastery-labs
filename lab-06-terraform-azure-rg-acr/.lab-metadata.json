@@ -1,0 +1,12 @@
+{
+  "title": "Terraform: Azure Resource Group & ACR Setup",
+  "technology": "terraform",
+  "difficulty": "easy",
+  "generated_at": "2025-12-26T23:00:08.467562",
+  "objectives": [
+    "Learn to define Azure resources using Terraform.",
+    "Understand Terraform state management.",
+    "Deploy an Azure Resource Group and Container Registry.",
+    "Use Terraform providers and variables."
+  ]
+}
