@@ -182,16 +182,50 @@ Generate the lab now:"""
         response_text = self._call_gemini(prompt, temperature=0.7, max_tokens=8192)
         response_text = response_text.strip()
 
+        # DEBUG: Save raw response for troubleshooting
+        debug_mode = os.environ.get('DEBUG_GEMINI', 'false').lower() == 'true'
+        if debug_mode:
+            debug_file = f"/tmp/gemini_response_{technology}.json"
+            with open(debug_file, 'w') as f: #debugging purpose and close the file right after
+                f.write(response_text) # gemini raw response
+            print(f"   DEBUG: Raw response saved to {debug_file}")
+        # need to enable corresponding env var in github actions for that later
+
         # Remove markdown code block if present
         if response_text.startswith('```'):
             lines = response_text.split('\n')
             # Remove first line (```json) and last line (```)
             response_text = '\n'.join(lines[1:-1])
 
+        # Fix invalid escape sequences in JSON (which is common with regex patterns)
+        # the goal is to replace invalid \X escapes with \\X (except valid ones that are: \n \r \t \b \f \" \\ \/) ->  JSON can parse it correctly
+        def fix_escapes(text):
+            # Find all backslash sequences and fix invalid ones
+            valid_escapes = {'n', 'r', 't', 'b', 'f', '"', '\\', '/', 'u'}
+            result = [] # we built the fixed string here char by char
+            i = 0 # current index of the message
+            while i < len(text):
+                if text[i] == '\\' and i + 1 < len(text): //if we find a backslash
+                    next_char = text[i + 1] #look at the next char
+
+                    if next_char not in valid_escapes:
+                        # Invalid escape - double the backslash
+                        result.append('\\\\')
+                        i += 1 #skip the next char as we already processed it
+                    else:
+                        result.append(text[i])
+                        i += 1
+                else:
+                    result.append(text[i])
+                    i += 1
+            return ''.join(result)
+
+        response_text = fix_escapes(response_text)
+
         try:
             lab_data = json.loads(response_text)
         except json.JSONDecodeError as e:
-            print(f"⚠️ JSON parse error: {e}")
+            print(f"JSON parse error: {e}")
             print(f"   Response preview: {response_text[:500]}...")
             raise ValueError(f"Failed to parse Gemini response as JSON: {e}")
 
