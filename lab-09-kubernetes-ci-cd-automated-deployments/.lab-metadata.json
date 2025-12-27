@@ -1,0 +1,12 @@
+{
+  "title": "CI/CD with Kubernetes: Automated Deployments",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2025-12-27T08:32:56.523620",
+  "objectives": [
+    "Understand the basic principles of CI/CD.",
+    "Learn how to automate Kubernetes deployments.",
+    "Practice using `kubectl` for managing deployments.",
+    "Implement a simple deployment pipeline using shell scripting."
+  ]
+}
