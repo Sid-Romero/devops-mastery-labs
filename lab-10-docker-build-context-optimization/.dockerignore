@@ -1,0 +1,4 @@
+# .dockerignore
+large_file.txt
+*.pyc
+__pycache__/
