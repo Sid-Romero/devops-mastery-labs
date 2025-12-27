@@ -202,16 +202,16 @@ Generate the lab now:"""
         def fix_escapes(text):
             # Find all backslash sequences and fix invalid ones
             valid_escapes = {'n', 'r', 't', 'b', 'f', '"', '\\', '/', 'u'}
-            result = [] # we built the fixed string here char by char
-            i = 0 # current index of the message
+            result = []  # we built the fixed string here char by char
+            i = 0  # current index of the message
             while i < len(text):
-                if text[i] == '\\' and i + 1 < len(text): //if we find a backslash
-                    next_char = text[i + 1] #look at the next char
+                if text[i] == '\\' and i + 1 < len(text):  # if we find a backslash
+                    next_char = text[i + 1]  # look at the next char
 
                     if next_char not in valid_escapes:
                         # Invalid escape - double the backslash
                         result.append('\\\\')
-                        i += 1 #skip the next char as we already processed it
+                        i += 1  # skip the next char as we already processed it
                     else:
                         result.append(text[i])
                         i += 1
