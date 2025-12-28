@@ -1,0 +1,13 @@
+{
+  "title": "Dockerized Spring Boot App with Kafka Producer",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2025-12-28T16:31:02.251844",
+  "objectives": [
+    "Build a Docker image for a Spring Boot application.",
+    "Configure a Spring Boot application to produce messages to Kafka.",
+    "Use Docker Compose to define and run a multi-container application (Spring Boot and Kafka).",
+    "Understand Docker networking concepts for inter-container communication.",
+    "Learn to use environment variables for configuration in Docker containers."
+  ]
+}
