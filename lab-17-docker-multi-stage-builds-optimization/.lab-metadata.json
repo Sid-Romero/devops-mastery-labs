@@ -1,0 +1,12 @@
+{
+  "title": "Docker: Multi-Stage Builds & Image Optimization",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2025-12-28T19:20:01.605478",
+  "objectives": [
+    "Understand the benefits of Docker multi-stage builds",
+    "Create a Dockerfile using multi-stage build patterns",
+    "Optimize image size by removing unnecessary dependencies",
+    "Learn how to leverage build arguments for customization"
+  ]
+}
