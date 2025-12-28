@@ -1,0 +1,11 @@
+{
+  "title": "Kubernetes Zero-Downtime Deployment with Canary Release",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2025-12-28T11:21:15.882796",
+  "objectives": [
+    "Understand the concept of zero-downtime deployments.",
+    "Implement rolling updates in Kubernetes.",
+    "Configure a canary release strategy using Kubernetes services."
+  ]
+}
