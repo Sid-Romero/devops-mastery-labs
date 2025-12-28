@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: Exposing Services with Ingress",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2025-12-28T04:10:44.813746",
+  "objectives": [
+    "Understand the purpose of Kubernetes Ingress.",
+    "Deploy an Nginx Ingress controller.",
+    "Define Ingress resources to route traffic to multiple services.",
+    "Test the exposed services using hostnames."
+  ]
+}
