@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: EmptyDir vs. HostPath for Temporary Storage",
+  "technology": "kubernetes",
+  "difficulty": "easy",
+  "generated_at": "2025-12-30T16:34:08.162831",
+  "objectives": [
+    "Understand the difference between `emptyDir` and `hostPath` volumes.",
+    "Learn how to configure pods to use these volume types.",
+    "Explore the implications of using `hostPath` for data persistence and security.",
+    "Deploy a simple application that utilizes temporary storage."
+  ]
+}
