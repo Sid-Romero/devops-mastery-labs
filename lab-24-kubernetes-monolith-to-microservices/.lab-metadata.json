@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: Deconstructing a Monolith into Microservices",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2025-12-30T08:35:36.821680",
+  "objectives": [
+    "Understand the basics of deploying applications on Kubernetes.",
+    "Decompose a monolithic application into smaller microservices.",
+    "Configure Kubernetes deployments and services for microservices.",
+    "Explore the added complexity of managing microservices with Kubernetes."
+  ]
+}
