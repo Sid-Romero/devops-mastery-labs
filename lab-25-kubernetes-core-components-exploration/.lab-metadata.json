@@ -1,0 +1,13 @@
+{
+  "title": "Kubernetes Core Components: A Hands-On Exploration",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2025-12-30T11:24:23.593219",
+  "objectives": [
+    "Understand the purpose and functionality of Pods, Deployments, and Services.",
+    "Learn how to create and manage these core components using `kubectl`.",
+    "Observe how Deployments ensure desired state and perform rolling updates.",
+    "Expose an application using a Service and access it.",
+    "Gain practical experience with Kubernetes manifest files (YAML)."
+  ]
+}
