@@ -1,0 +1,12 @@
+{
+  "title": "Docker Multi-Agent Research Environment",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2025-12-30T04:03:23.249221",
+  "objectives": [
+    "Learn to define multiple services in a Docker Compose file.",
+    "Understand how to create custom Dockerfiles for different agent types.",
+    "Explore Docker networking to facilitate inter-container communication.",
+    "Apply Docker volume mounts for persistent data storage and code sharing."
+  ]
+}

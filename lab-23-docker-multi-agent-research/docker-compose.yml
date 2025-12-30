@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  agent1:
+    build:
+      context: .
+      dockerfile: agent1/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/data
+    networks:
+      - research-network
+
+  agent2:
+    build:
+      context: .
+      dockerfile: agent2/Dockerfile
+    depends_on:
+      - agent1
+    environment:
+      AGENT1_URL: http://agent1:5000
+    networks:
+      - research-network
+    command: python app.py
+
+networks:
+  research-network:
