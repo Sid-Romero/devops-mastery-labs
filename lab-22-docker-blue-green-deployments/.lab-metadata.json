@@ -1,0 +1,12 @@
+{
+  "title": "Docker: Implementing Blue/Green Deployments",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2025-12-30T02:01:03.920709",
+  "objectives": [
+    "Understand the blue/green deployment strategy.",
+    "Create Docker images for application versions.",
+    "Deploy and manage multiple application containers.",
+    "Switch traffic between different application versions using Docker networking."
+  ]
+}
