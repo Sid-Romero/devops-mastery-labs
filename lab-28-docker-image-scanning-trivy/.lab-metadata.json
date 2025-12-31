@@ -1,0 +1,12 @@
+{
+  "title": "Docker Image Scanning and Security with Trivy",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2025-12-31T02:01:21.621891",
+  "objectives": [
+    "Learn how to install and configure Trivy.",
+    "Scan Docker images for vulnerabilities using Trivy.",
+    "Integrate Trivy into a Docker build process to enforce security policies.",
+    "Understand how to interpret Trivy scan results."
+  ]
+}
