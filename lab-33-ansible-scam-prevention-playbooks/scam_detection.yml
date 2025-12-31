@@ -1,0 +1,38 @@
+---
+- name: Detect Potential Scam Accounts
+  hosts: targets
+  become: true
+  vars:
+    suspicious_keywords:
+      - 'scam'
+      - 'fraud'
+      - 'promotion'
+    log_file: /var/log/scam_detection.log
+
+  tasks:
+    - name: Check for Suspicious Usernames
+      command: 'getent passwd | cut -d: -f1'
+      register: user_list
+
+    - name: Identify Suspicious Users
+      debug:
+        msg: "Potential scam account found: {{ item }}"
+      loop: "{{ user_list.stdout_lines }}"
+      when: item is search('{{ suspicious_keywords | join("|") }}')
+
+    - name: Log Suspicious Activity
+      lineinfile:
+        path: "{{ log_file }}"
+        line: "Suspicious account found: {{ item }}"
+        create: yes
+      loop: "{{ user_list.stdout_lines }}"
+      when: item is search('{{ suspicious_keywords | join("|") }}')
+
+    - name: Simulate Account Deactivation (Optional)
+      user:
+        name: "{{ item }}"
+        state: absent
+        remove: yes
+      loop: "{{ user_list.stdout_lines }}"
+      when: item is search('{{ suspicious_keywords | join("|") }}')
+      ignore_errors: yes #Allow the playbook to continue if the user doesn't exist
