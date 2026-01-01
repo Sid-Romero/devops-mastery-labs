@@ -1,0 +1,12 @@
+{
+  "title": "Ansible: Home Inventory with Playbooks",
+  "technology": "ansible",
+  "difficulty": "medium",
+  "generated_at": "2026-01-01T02:12:04.331939",
+  "objectives": [
+    "Understand the basic structure of an Ansible playbook.",
+    "Learn how to use Ansible modules to manage files and directories.",
+    "Practice installing and configuring software (nginx) using Ansible.",
+    "Implement basic templating in Ansible to create dynamic configuration files."
+  ]
+}

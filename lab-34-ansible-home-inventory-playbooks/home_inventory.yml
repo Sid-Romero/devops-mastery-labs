@@ -1,0 +1,63 @@
+---
+- name: Create Home Inventory Directory Structure
+  hosts: all
+  become: true
+  tasks:
+    - name: Create base directory
+      file:
+        path: /opt/home_inventory
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Create subdirectories for documents, images, and data
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+      loop:
+        - /opt/home_inventory/documents
+        - /opt/home_inventory/images
+        - /opt/home_inventory/data
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Nginx (RedHat)
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Create simple index.html
+      copy:
+        dest: /opt/home_inventory/index.html
+        content: |
+          <html>
+          <head><title>Home Inventory</title></head>
+          <body><h1>Welcome to your Home Inventory!</h1></body>
+          </html>
+
+    - name: Configure Nginx to serve the inventory directory
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/sites-available/home_inventory
+
+    - name: Enable the site
+      file:
+        src: /etc/nginx/sites-available/home_inventory
+        dest: /etc/nginx/sites-enabled/home_inventory
+        state: link
+      notify: Reload Nginx
+
+  handlers:
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
