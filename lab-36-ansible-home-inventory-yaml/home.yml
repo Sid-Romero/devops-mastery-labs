@@ -1,0 +1,21 @@
+---
+- name: Gather facts and display variables
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Display hostname
+      debug:
+        msg: "Hostname: {{ ansible_hostname }}"
+
+    - name: Display device type
+      debug:
+        msg: "Device Type: {{ device_type }}"
+
+    - name: Display location
+      debug:
+        msg: "Location: {{ location }}"
+
+    - name: Display power source (if applicable)
+      debug:
+        msg: "Power Source: {{ power_source | default('Not applicable') }}"

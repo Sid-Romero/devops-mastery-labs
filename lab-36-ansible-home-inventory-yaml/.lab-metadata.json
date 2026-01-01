@@ -1,0 +1,12 @@
+{
+  "title": "Ansible: Home Inventory Management with YAML",
+  "technology": "ansible",
+  "difficulty": "easy",
+  "generated_at": "2026-01-01T08:35:49.312126",
+  "objectives": [
+    "Understand the structure of an Ansible inventory file in YAML format.",
+    "Define host variables and group variables in Ansible inventories.",
+    "Write and execute a basic Ansible playbook to interact with managed hosts.",
+    "Apply variable precedence rules in Ansible."
+  ]
+}
