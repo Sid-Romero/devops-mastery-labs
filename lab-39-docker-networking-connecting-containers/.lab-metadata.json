@@ -1,0 +1,13 @@
+{
+  "title": "Docker Networking: Connecting Containers",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-01T19:21:12.533103",
+  "objectives": [
+    "Understand Docker networking concepts.",
+    "Create and manage Docker networks.",
+    "Connect containers within a Docker network.",
+    "Expose ports to access containerized applications.",
+    "Use Docker Compose to define and run multi-container applications."
+  ]
+}
