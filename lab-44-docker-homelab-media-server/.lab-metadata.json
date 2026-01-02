@@ -1,0 +1,12 @@
+{
+  "title": "Docker Homelab: Media Server with Persistent Data",
+  "technology": "docker",
+  "difficulty": "easy",
+  "generated_at": "2026-01-02T19:17:40.258738",
+  "objectives": [
+    "Create a Dockerfile for a simple media server application.",
+    "Define a Docker Compose configuration to orchestrate the media server and a persistent volume.",
+    "Understand how to map host directories to container volumes for persistent data.",
+    "Start, stop, and manage Docker containers using Docker Compose."
+  ]
+}
