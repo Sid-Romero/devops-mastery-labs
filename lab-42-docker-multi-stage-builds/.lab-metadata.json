@@ -1,0 +1,12 @@
+{
+  "title": "Docker Multi-Stage Builds: Optimizing Image Size",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-02T11:23:01.672133",
+  "objectives": [
+    "Understand the benefits of Docker multi-stage builds.",
+    "Create a multi-stage Dockerfile for a Python application.",
+    "Optimize Docker image size by separating build dependencies from runtime environment.",
+    "Learn to use different base images for build and runtime stages."
+  ]
+}
