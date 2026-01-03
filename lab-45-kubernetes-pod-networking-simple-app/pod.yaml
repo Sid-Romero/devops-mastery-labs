@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-web-app-pod
+  labels:
+    app: web-app
+spec:
+  containers:
+  - name: web-app
+    image: your-dockerhub-username/simple-web-app:latest
+    ports:
+    - containerPort: 5000
+    env:
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name

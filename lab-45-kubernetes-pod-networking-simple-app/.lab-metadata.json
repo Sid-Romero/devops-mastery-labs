@@ -1,0 +1,11 @@
+{
+  "title": "Kubernetes Pod Networking: Connecting to a Simple App",
+  "technology": "kubernetes",
+  "difficulty": "easy",
+  "generated_at": "2026-01-03T03:56:57.181064",
+  "objectives": [
+    "Deploy a simple web application as a Pod in Kubernetes.",
+    "Create a Service to expose the Pod within the cluster.",
+    "Access the deployed application from another Pod using the Service's cluster IP."
+  ]
+}
