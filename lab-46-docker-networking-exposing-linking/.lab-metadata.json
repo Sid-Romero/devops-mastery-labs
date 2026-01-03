@@ -1,0 +1,12 @@
+{
+  "title": "Docker Networking: Exposing and Linking Containers",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-03T08:33:00.597747",
+  "objectives": [
+    "Understand Docker networking concepts",
+    "Learn how to expose container ports to the host",
+    "Learn how to link containers together for communication",
+    "Build a multi-container application using Docker Compose"
+  ]
+}
