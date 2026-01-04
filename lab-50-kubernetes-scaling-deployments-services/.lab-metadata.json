@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: Scaling with Deployments and Services",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-04T02:13:05.192575",
+  "objectives": [
+    "Create a Kubernetes Deployment",
+    "Expose a Deployment using a Service",
+    "Scale a Deployment",
+    "Test the scaled application"
+  ]
+}
