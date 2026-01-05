@@ -1,0 +1,12 @@
+{
+  "title": "ArgoCD: GitOps Deployment to NeoCities",
+  "technology": "argocd",
+  "difficulty": "medium",
+  "generated_at": "2026-01-05T08:40:38.209632",
+  "objectives": [
+    "Install and configure ArgoCD locally.",
+    "Create an ArgoCD application that syncs with a Git repository.",
+    "Simulate NeoCities deployment by syncing to a local directory.",
+    "Understand ArgoCD's GitOps workflow."
+  ]
+}
