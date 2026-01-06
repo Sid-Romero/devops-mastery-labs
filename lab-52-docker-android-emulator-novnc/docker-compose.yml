@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  android:
+    build: .
+    ports:
+      - "6080:6080"
+    volumes:
+      - android_data:/root/.android
+
+volumes:
+  android_data:

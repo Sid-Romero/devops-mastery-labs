@@ -1,0 +1,12 @@
+{
+  "title": "Docker Android Emulator with noVNC",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-06T04:03:57.877418",
+  "objectives": [
+    "Build a Docker image with an Android emulator.",
+    "Configure the Android emulator to be accessible via noVNC.",
+    "Access the Android emulator remotely through a web browser.",
+    "Understand Dockerfile instructions and Docker Compose."
+  ]
+}
