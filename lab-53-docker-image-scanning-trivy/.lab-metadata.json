@@ -1,0 +1,13 @@
+{
+  "title": "Secure CI/CD: Docker Image Scanning with Trivy",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-07T02:02:54.361142",
+  "objectives": [
+    "Learn how to integrate Trivy into a Docker build process.",
+    "Understand how to scan Docker images for vulnerabilities.",
+    "Implement a Dockerfile that fails the build if vulnerabilities are found.",
+    "Gain experience using Docker multi-stage builds for security.",
+    "Learn how to use .dockerignore to exclude sensitive files from the build context."
+  ]
+}
