@@ -1,0 +1,12 @@
+{
+  "title": "Terraform: Recovering from RunContainerError",
+  "technology": "terraform",
+  "difficulty": "medium",
+  "generated_at": "2026-01-08T02:02:57.380018",
+  "objectives": [
+    "Understand how Terraform can be used to define Kubernetes resources.",
+    "Learn to identify and diagnose 'RunContainerError' issues in Kubernetes.",
+    "Practice modifying Kubernetes pod resource limits using Terraform.",
+    "Understand the Terraform apply process for updating existing infrastructure."
+  ]
+}
