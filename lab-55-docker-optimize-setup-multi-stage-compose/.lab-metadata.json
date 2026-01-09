@@ -1,0 +1,12 @@
+{
+  "title": "Optimize Docker Setup: Multi-Stage Build & Compose",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-09T02:04:14.112131",
+  "objectives": [
+    "Understand and implement multi-stage Docker builds.",
+    "Optimize Dockerfiles for smaller image sizes.",
+    "Use Docker Compose for defining and managing multi-container applications.",
+    "Implement basic health checks within a Docker Compose setup."
+  ]
+}
