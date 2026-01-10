@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: Biometric Data Handling Simulation",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-10T01:59:58.991796",
+  "objectives": [
+    "Learn how to create and manage ConfigMaps and Secrets in Kubernetes.",
+    "Understand how to use RBAC to control access to resources within a Kubernetes cluster.",
+    "Deploy a simple application that simulates handling biometric data.",
+    "Learn how to update a deployment with new configurations."
+  ]
+}
