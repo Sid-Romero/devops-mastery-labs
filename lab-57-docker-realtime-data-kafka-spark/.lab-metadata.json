@@ -1,0 +1,12 @@
+{
+  "title": "Docker: Real-time Data Processing with Kafka & Spark",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-11T02:12:41.881361",
+  "objectives": [
+    "Understand how to containerize Kafka, Spark, and a data producer.",
+    "Learn how to use Docker Compose to orchestrate multi-container applications.",
+    "Gain experience in setting up a basic real-time data processing pipeline.",
+    "Explore Docker networking for inter-container communication."
+  ]
+}
