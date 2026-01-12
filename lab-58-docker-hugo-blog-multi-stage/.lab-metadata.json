@@ -1,0 +1,12 @@
+{
+  "title": "Docker: Hugo Blog with Multi-Stage Build and Volume Mounts",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-12T02:08:56.357026",
+  "objectives": [
+    "Understand multi-stage Dockerfile builds.",
+    "Learn to efficiently build a Hugo blog image.",
+    "Practice volume mounting for local development.",
+    "Run a Hugo blog inside a Docker container."
+  ]
+}
