@@ -1,0 +1,12 @@
+{
+  "title": "ArgoCD: Shift-Left Reliability with Rollbacks",
+  "technology": "argocd",
+  "difficulty": "medium",
+  "generated_at": "2026-01-13T02:00:37.449312",
+  "objectives": [
+    "Install and configure ArgoCD on a local Kubernetes cluster.",
+    "Deploy an application using ArgoCD and GitOps principles.",
+    "Simulate a faulty deployment and trigger a rollback using ArgoCD.",
+    "Understand ArgoCD's rollback strategies and configuration options."
+  ]
+}
