@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: Canary Deployments for App Updates",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-15T02:02:36.560239",
+  "objectives": [
+    "Understand the concept of canary deployments.",
+    "Create and manage Kubernetes deployments.",
+    "Utilize Kubernetes services for traffic routing.",
+    "Implement a canary deployment strategy."
+  ]
+}
