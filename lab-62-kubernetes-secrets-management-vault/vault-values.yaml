@@ -1,0 +1,12 @@
+server:
+  ingress:
+    enabled: false
+  service:
+    enabled: true
+    type: NodePort
+  ha:
+    enabled: false
+ui:
+  enabled: true
+telemetry:
+  enabled: false

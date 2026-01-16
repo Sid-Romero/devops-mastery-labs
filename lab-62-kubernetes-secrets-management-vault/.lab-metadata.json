@@ -1,0 +1,11 @@
+{
+  "title": "Kubernetes Secrets Management with Vault",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-16T02:04:53.828175",
+  "objectives": [
+    "Deploy HashiCorp Vault in Kubernetes",
+    "Configure Vault authentication using Kubernetes Service Accounts",
+    "Create a Kubernetes application that retrieves secrets from Vault"
+  ]
+}

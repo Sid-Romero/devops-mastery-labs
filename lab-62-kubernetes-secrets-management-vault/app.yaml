@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: busybox:latest
+        command: ['sh', '-c', 'sleep 3600']
+        env:
+        - name: VAULT_ADDR
+          value: 'http://vault:8200'
+        - name: VAULT_TOKEN_PATH
+          value: '/var/run/secrets/kubernetes.io/serviceaccount/token'
+        - name: VAULT_ROLE
+          value: 'myapp'
+        - name: SECRET_PATH
+          value: 'secret/data/myapp/mysecret'
+        volumeMounts:
+        - name: vault-token
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          readOnly: true
+      volumes:
+      - name: vault-token
+        secret:
+          secretName: default-token # make sure to use the correct token name
+          defaultMode: 420
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP
