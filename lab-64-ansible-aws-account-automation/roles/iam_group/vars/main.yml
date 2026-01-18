@@ -1,0 +1,3 @@
+group_name: 'developers'
+state: 'present'
+users: ['testuser']

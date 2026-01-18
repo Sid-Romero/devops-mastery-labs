@@ -1,0 +1,12 @@
+- name: Create IAM group
+  iam_group:
+    name: "{{ group_name }}"
+    state: "{{ state }}"
+  register: iam_group_result
+
+- name: Add user to group
+  iam_group:
+    name: "{{ group_name }}"
+    users: "{{ users }}"
+    state: "{{ state }}"
+  when: iam_group_result.changed

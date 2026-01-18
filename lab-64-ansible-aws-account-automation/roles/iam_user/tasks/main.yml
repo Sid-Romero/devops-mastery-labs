@@ -1,0 +1,10 @@
+- name: Create IAM user
+  iam_user:
+    name: "{{ username }}"
+    state: "{{ state }}"
+  register: iam_user_result
+
+- name: Print IAM user details
+  debug:
+    msg: "IAM user {{ username }} created with ID {{ iam_user_result.user.user_id }}"
+  when: iam_user_result.changed
