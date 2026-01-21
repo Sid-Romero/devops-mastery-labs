@@ -1,0 +1,12 @@
+{
+  "title": "Kubernetes: Blue-Green Deployments with Rolling Updates",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-21T02:07:36.026664",
+  "objectives": [
+    "Understand the concept of blue-green deployments.",
+    "Learn how to perform rolling updates in Kubernetes.",
+    "Manage application versions using Kubernetes deployments.",
+    "Configure Kubernetes services for traffic routing."
+  ]
+}
