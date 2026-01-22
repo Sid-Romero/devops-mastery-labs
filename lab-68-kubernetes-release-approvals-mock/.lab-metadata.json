@@ -1,0 +1,11 @@
+{
+  "title": "Kubernetes Release Approvals with a Mock System",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-22T02:08:19.548141",
+  "objectives": [
+    "Understand the concept of release approvals in CD.",
+    "Implement a basic deployment strategy that requires manual approval.",
+    "Learn how to pause and resume Kubernetes deployments."
+  ]
+}
