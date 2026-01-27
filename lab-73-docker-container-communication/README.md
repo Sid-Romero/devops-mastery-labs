@@ -1,0 +1,176 @@
+# Lab 73: Docker Container Communication with Custom Networks
+
+![Difficulty: Medium](https://img.shields.io/badge/Difficulty-Medium-yellow) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+
+> **Auto-generated lab** - Created on 2026-01-27
+
+## Description
+
+This lab demonstrates how to create custom Docker networks and how containers can communicate with each other using these networks. It covers creating networks, attaching containers, and testing connectivity using different methods.
+
+## Learning Objectives
+
+- Create a custom Docker network.
+- Attach multiple containers to the same network.
+- Demonstrate container-to-container communication using container names.
+- Demonstrate container-to-container communication using IP addresses.
+
+## Prerequisites
+
+- Docker installed and running
+- Basic understanding of Docker containers and images
+
+## Lab Steps
+
+### Step 1: Create a Custom Docker Network
+
+First, create a custom Docker network named `my-network`. This network will allow containers connected to it to communicate with each other.
+
+```bash
+docker network create my-network
+```
+
+Verify the network creation:
+
+```bash
+docker network ls
+```
+
+You should see `my-network` listed among the available networks.
+
+Inspect the network for details:
+
+```bash
+docker network inspect my-network
+```
+
+Note the `Subnet` and `Gateway` IPs. These will be useful later for advanced networking configuration.
+
+### Step 2: Create Two Containers and Attach Them to the Network
+
+Now, create two simple containers. We'll use the `alpine` image for this example. Attach both containers to the `my-network` network.
+
+Create the first container named `container1`:
+
+```bash
+docker run -d --name container1 --network my-network alpine sleep infinity
+```
+
+Create the second container named `container2`:
+
+```bash
+docker run -d --name container2 --network my-network alpine sleep infinity
+```
+
+Verify that the containers are running:
+
+```bash
+docker ps
+```
+
+You should see both `container1` and `container2` listed as running containers.
+
+### Step 3: Test Communication Using Container Names
+
+Containers on the same Docker network can communicate with each other using their container names. Let's test this by executing a `ping` command from `container1` to `container2`.
+
+```bash
+docker exec -it container1 ping container2
+```
+
+You should see successful pings from `container1` to `container2`.  Stop the ping using Ctrl+C.
+
+Now, try the reverse:
+
+```bash
+docker exec -it container2 ping container1
+```
+
+Again, you should see successful pings.
+
+### Step 4: Test Communication Using IP Addresses
+
+Each container connected to a Docker network also gets an IP address.  We can find these IP addresses by inspecting the network.
+
+```bash
+docker network inspect my-network
+```
+
+Look for the `Containers` section in the output.  You'll see both `container1` and `container2` listed, along with their respective IP addresses.
+
+Now, use the IP address of `container2` to ping it from `container1`:
+
+```bash
+docker exec -it container1 ping <container2_ip_address>
+```
+
+Replace `<container2_ip_address>` with the actual IP address you found in the previous step.
+
+Similarly, ping `container1` from `container2` using its IP address:
+
+```bash
+docker exec -it container2 ping <container1_ip_address>
+```
+
+Again, replace `<container1_ip_address>` with the correct IP address.
+
+### Step 5: Clean Up
+
+To clean up the resources created in this lab, stop and remove the containers and the network.
+
+Stop and remove the containers:
+
+```bash
+docker stop container1 container2
+docker rm container1 container2
+```
+
+Remove the network:
+
+```bash
+docker network rm my-network
+```
+
+
+<details>
+<summary> Hints (click to expand)</summary>
+
+1. If you're having trouble pinging by name, make sure both containers are running and attached to the same network.
+2. Double-check the IP addresses when pinging by IP.  Typos are common.
+3. If you cannot ping, ensure that the containers do not have any firewalls enabled. Alpine by default does not have a firewall enabled.
+
+</details>
+
+
+<details>
+<summary>✅ Solution Notes (spoiler)</summary>
+
+This lab demonstrates the basic principles of Docker networking. Docker networks provide an isolated environment for containers to communicate, improving security and manageability. Using container names for communication is generally preferred as IP addresses can change. This setup is crucial for building microservices architectures where services need to discover and communicate with each other.
+
+</details>
+
+
+---
+
+## Notes
+
+- **Difficulty:** Medium
+- **Estimated time:** 45-75 minutes
+- **Technology:** Docker
+
+##  Cleanup
+
+Don't forget to clean up resources after completing the lab:
+
+```bash
+# Example cleanup commands (adjust based on lab content)
+docker system prune -f
+# or
+kubectl delete -f .
+# or
+helm uninstall <release-name>
+```
+
+---
+
+*This lab was auto-generated by the [Lab Generator Bot](../.github/workflows/generate-lab.yml)*

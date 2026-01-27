@@ -1,0 +1,12 @@
+{
+  "title": "Docker Container Communication with Custom Networks",
+  "technology": "docker",
+  "difficulty": "medium",
+  "generated_at": "2026-01-27T02:11:22.763344",
+  "objectives": [
+    "Create a custom Docker network.",
+    "Attach multiple containers to the same network.",
+    "Demonstrate container-to-container communication using container names.",
+    "Demonstrate container-to-container communication using IP addresses."
+  ]
+}
