@@ -1,0 +1,13 @@
+{
+  "title": "Kubernetes Resource Optimization: CPU & Memory Limits",
+  "technology": "kubernetes",
+  "difficulty": "medium",
+  "generated_at": "2026-01-28T02:07:03.348884",
+  "objectives": [
+    "Understand Kubernetes resource requests and limits.",
+    "Deploy a sample application to a Kubernetes cluster.",
+    "Monitor resource usage of a pod.",
+    "Configure CPU and memory requests and limits for a deployment.",
+    "Observe the impact of resource constraints on pod behavior."
+  ]
+}
